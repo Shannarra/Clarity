@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @entry.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @entry.body %>
+</p>
+</p>
+
+<h1>
+  <strong>Tags count:</strong>
+  <%= @entry.tags.count %>
+
+  <%- if @entry.tags.count > 0 %>
+    <br/>  
+    <%- @entry.tags.each do |t|%>
+      <h2>
+        <p>
+          <%= t.name %>
+        </p>
+      </h2> 
+    <%- end%>
+  <% end%>
+</h1>
+
+<%= link_to '+ Add Tag', new_tag_path(curr_entry_id: @entry) %> 
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

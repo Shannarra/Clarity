@@ -1,0 +1,32 @@
+<%= form_with(model: tag) do |form| %>
+  <% if tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+
+      <ul>
+        <% tag.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%- if params[:curr_entry_id] %>
+      <%= form.label :entry_id, :value => "Current Entity: #{params[:curr_entry_id]}" %>
+      <%= form.number_field :entry_id, :value => params[:curr_entry_id]  %>
+    <%- else %>
+      <%= form.label :entry_id %>
+      <%= form.number_field :entry_id%>
+    <%- end%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
